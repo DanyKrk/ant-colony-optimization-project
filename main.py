@@ -160,18 +160,16 @@ class SolveTSPUsingACO:
 
 
 if __name__ == '__main__':
-    _colony_size = 5
-    _steps = 50
-    # _nodes = [(random.uniform(-400, 400), random.uniform(-400, 400)) for _ in range(0, 15)]
-    _nodes = [[18.66,54.35],[21,52.15],[19.56,50.04],[16.92,52.41],[14.54,53.44],[17.03,51.1],[18,53.09],[19.47,51.78],
-              [19.07,50.48],[23.10,53.20],[22.34,51.14]]
-    labels = ['Gdańsk','Warszawa','Kraków','Poznań','Szczecin',"Wrocław",'Bydgoszcz','Łódź','Częstochowa','Białystok','Lublin']
-    acs = SolveTSPUsingACO(mode='ACS', colony_size=_colony_size, steps=_steps, nodes=_nodes,labels=labels)
+    _colony_size = 20
+    _steps = 200
+    _nodes_number = 125
+    _nodes = [(random.uniform(-400, 400), random.uniform(-400, 400)) for _ in range(0, _nodes_number)]
+    acs = SolveTSPUsingACO(mode='ACS', colony_size=_colony_size, steps=_steps, nodes=_nodes)
     acs.run()
     acs.plot()
-    elitist = SolveTSPUsingACO(mode='Elitist', colony_size=_colony_size, steps=_steps, nodes=_nodes,labels=labels)
+    elitist = SolveTSPUsingACO(mode='Elitist', colony_size=_colony_size, steps=_steps, nodes=_nodes)
     elitist.run()
     elitist.plot()
-    max_min = SolveTSPUsingACO(mode='MaxMin', colony_size=_colony_size, steps=_steps, nodes=_nodes,labels=labels)
+    max_min = SolveTSPUsingACO(mode='MaxMin', colony_size=_colony_size, steps=_steps, nodes=_nodes)
     max_min.run()
     max_min.plot()
